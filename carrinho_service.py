@@ -1,7 +1,17 @@
 from fastapi import FastAPI
 from write_read import escrita, leitura
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins="http://localhost:5500",
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 produtostxt = "arquivos_textos/produto.txt"
 logintxt = "arquivos_textos/login.txt"
 carrinhotxt = "arquivos_textos/carrinho.txt"

@@ -1,7 +1,16 @@
 from fastapi import FastAPI, HTTPException
 from write_read import leitura, escrita
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+app.add_middleware(
+   CORSMiddleware,
+   allow_origins="http://localhost:5500",
+   allow_credentials=True,
+   allow_methods=["*"],
+   allow_headers=["*"],
+)
 
 pedidostxt = "arquivos_textos/pedido.txt"
 teste_login = leitura("login.txt")
